@@ -1,6 +1,6 @@
 [package]
 name = "tonic-openssl"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Lucio Franco <luciofranco14@gmail.com>"]
 edition = "2018"
 license = "MIT"
@@ -12,14 +12,20 @@ keywords = ["gRPC", "tls", "openssl"]
 readme = "README.md"
 
 [workspace]
-members = [
-    ".",
-    "example"
-]
+members = [".", "example"]
 
 [dependencies]
 tokio = "1"
-tonic = "0.8"
+tonic = { version = "0.11", features = [
+    "transport",
+    "channel",
+    "codegen",
+    "tls",
+    "tls-roots",
+    "tls-webpki-roots",
+    "prost",
+    "gzip",
+] }
 async-stream = "0.3"
 tokio-openssl = "0.6"
 openssl = "0.10"
